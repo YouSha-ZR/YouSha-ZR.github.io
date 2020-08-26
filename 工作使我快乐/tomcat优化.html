@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>tomcat优化 | 忆江南</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="https://dss1.bdstatic.com/6OF1bjeh1BF3odCf/it/u=210770744,2328723573&amp;fm=85&amp;app=79&amp;f=JPEG?w=121&amp;h=75&amp;s=95F35F36EC73B6014C2583EF03007027">
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.34d67128.css" as="style"><link rel="preload" href="/assets/js/app.fa91de30.js" as="script"><link rel="preload" href="/assets/js/2.0d0d65b4.js" as="script"><link rel="preload" href="/assets/js/18.8eaee8b6.js" as="script"><link rel="prefetch" href="/assets/js/10.fdada502.js"><link rel="prefetch" href="/assets/js/11.7446c5d9.js"><link rel="prefetch" href="/assets/js/12.43e73420.js"><link rel="prefetch" href="/assets/js/13.0bd00f52.js"><link rel="prefetch" href="/assets/js/14.8cd3817e.js"><link rel="prefetch" href="/assets/js/15.ce210d71.js"><link rel="prefetch" href="/assets/js/16.ae0272e0.js"><link rel="prefetch" href="/assets/js/17.9f321981.js"><link rel="prefetch" href="/assets/js/19.a1d3ae1d.js"><link rel="prefetch" href="/assets/js/20.310d84f6.js"><link rel="prefetch" href="/assets/js/21.251e31ae.js"><link rel="prefetch" href="/assets/js/3.e0637fce.js"><link rel="prefetch" href="/assets/js/4.7d5f245c.js"><link rel="prefetch" href="/assets/js/5.f8be39f3.js"><link rel="prefetch" href="/assets/js/6.9beb8a1d.js"><link rel="prefetch" href="/assets/js/7.04560a71.js"><link rel="prefetch" href="/assets/js/8.498d5952.js"><link rel="prefetch" href="/assets/js/9.48a50568.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.34d67128.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2628267071,65708773&amp;fm=26&amp;gp=0.jpg" alt="忆江南" class="logo"> <span class="site-name can-hide">忆江南</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国际站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国内站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国际站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国内站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国际站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国内站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国际站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国内站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/java/" class="sidebar-heading clickable"><span>Java</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/java/权限修饰符.html" class="sidebar-link">权限修饰符</a></li><li><a href="/java/springBoot整合Swagger2.html" class="sidebar-link">springBoot整合Swagger2</a></li><li><a href="/java/linux命令集.html" class="sidebar-link">linux命令集</a></li><li><a href="/java/项目部署.html" class="sidebar-link">项目部署</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/vue/" class="sidebar-heading clickable"><span>Vue</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue/vue-1.html" class="sidebar-link">Vue01</a></li><li><a href="/vue/vue-2.html" class="sidebar-link">Vue01</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/数据库/" class="sidebar-heading clickable"><span>数据库</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/数据库/记录第一次sql优化经历.html" class="sidebar-link">记录第一次sql优化经历</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/nginx/" class="sidebar-heading clickable"><span>nginx</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/nginx/01_nginx.html" class="sidebar-link">01_nginx</a></li><li><a href="/nginx/02_nginx.html" class="sidebar-link">02_nginx</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/工作使我快乐/" class="sidebar-heading clickable open"><span>工作使我快乐</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/工作使我快乐/关于解决绿盟科技安全评估报告中的web漏洞.html" class="sidebar-link">关于解决绿盟科技安全评估报告中的web漏洞</a></li><li><a href="/工作使我快乐/springboot项目瘦身开始.html" class="sidebar-link">springboot项目瘦身开始</a></li><li><a href="/工作使我快乐/tomcat优化.html" class="active sidebar-link">tomcat优化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/工作使我快乐/tomcat优化.html#tomcat优化" class="sidebar-link">tomcat优化</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/工作使我快乐/tomcat优化.html#_1-安装-tomcat" class="sidebar-link">1-安装 tomcat</a></li><li class="sidebar-sub-header"><a href="/工作使我快乐/tomcat优化.html#_2-启动-tomcat" class="sidebar-link">2-启动 tomcat</a></li><li class="sidebar-sub-header"><a href="/工作使我快乐/tomcat优化.html#_3-优化" class="sidebar-link">3-优化</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="tomcat优化"><a href="#tomcat优化" class="header-anchor">#</a> tomcat优化</h2> <h3 id="_1-安装-tomcat"><a href="#_1-安装-tomcat" class="header-anchor">#</a> 1-安装 tomcat</h3> <p>此处省略！</p> <h3 id="_2-启动-tomcat"><a href="#_2-启动-tomcat" class="header-anchor">#</a> 2-启动 tomcat</h3> <p>  启动tomcat （图一），点击<code>server status</code> 输入账户密码，需要到tomcat安装目录下的<code>conf--&gt;tomcat-users.xml</code>新加用户配置如图二所示，进入图三界面。<br>
+图一：<br> <img src="https://hg-tian-guangzhou.oss-cn-shenzhen.aliyuncs.com/docblog/%E5%B7%A5%E4%BD%9C%E4%BD%BF%E6%88%91%E5%BF%AB%E4%B9%90/tomcatYH/1598408602%281%29.jpg" alt="qidong">
+图二：<br> <img src="https://hg-tian-guangzhou.oss-cn-shenzhen.aliyuncs.com/docblog/%E5%B7%A5%E4%BD%9C%E4%BD%BF%E6%88%91%E5%BF%AB%E4%B9%90/tomcatYH/1598409069%281%29.jpg" alt="qidong">
+图三：<br> <img src="https://hg-tian-guangzhou.oss-cn-shenzhen.aliyuncs.com/docblog/%E5%B7%A5%E4%BD%9C%E4%BD%BF%E6%88%91%E5%BF%AB%E4%B9%90/tomcatYH/1598409210%281%29.jpg" alt="qidong"></p> <h3 id="_3-优化"><a href="#_3-优化" class="header-anchor">#</a> 3-优化</h3> <h4 id="_3-1-禁用ajp连接"><a href="#_3-1-禁用ajp连接" class="header-anchor">#</a> 3-1 禁用AJP连接</h4> <p>在服务状态页面中可以看到，默认状态下会启用AJP服务，并且占用8009端口。<br> <img src="https://hg-tian-guangzhou.oss-cn-shenzhen.aliyuncs.com/docblog/%E5%B7%A5%E4%BD%9C%E4%BD%BF%E6%88%91%E5%BF%AB%E4%B9%90/tomcatYH/15605786-35f62e0541197150.png" alt="qidong"><br>
+什么是AJP呢？</p> <p>AJP（Apache JServer Protocol）<br>
+AJPv13协议是面向包的。WEB服务器和Servlet容器通过TCP连接来交互；为了节省SOCKET创建的昂贵代价，<br>
+WEB服务器会尝试维护一个永久TCP连接到servlet容器，并且在多个请求和响应周期过程会重用连接。<br>
+我们一般是使用Nginx+tomcat的架构，所以用不着AJP协议，所以把AJP连接器禁用。<br>
+修改conf下的server.xml文件，将AJP服务禁用掉即可。</p> <h4 id="_3-2-执行器（线程池）"><a href="#_3-2-执行器（线程池）" class="header-anchor">#</a> 3-2 执行器（线程池）</h4> <p>在tomcat中每一个用户请求都是一个线程，所以可以使用线程池提高性能。<br>
+修改server.xml文件：</p> <details class="custom-block details"><summary>点击查看代码</summary> <div class="language-.xml extra-class"><pre class="language-text"><code>&lt;!--
+	执行器：
+	参数说明：
+	maxThreads：最大并发数，默认150，一般设置在500~1000，需要根据硬件设施来判断，
+	minSpareThreads：初始化时创建的线程数
+	maxSpareThreads:一旦创建的线程超过这个值，Tomcat就会关闭不再需要的socket线程
+	prestartminSpareThreads: 在 Tomcat 初始化的时候就初始化 minSpareThreads 的参数值，
+							如果不等于 true，minSpareThreads 的值就没啥效果了
+	maxQueueSize:最大的等待队列数，超过则拒绝请求
+	maxIdleTime:线程最大空闲时间
+	--&gt;
+    &lt;Executor name=&quot;tomcatThreadPool&quot; namePrefix=&quot;catalina-exec-&quot;
+        maxThreads=&quot;500&quot; minSpareThreads=&quot;50&quot; prestartminSpareThreads=&quot;true&quot; maxQueueSize=&quot;100&quot;/&gt;
+    
+
+
+</code></pre></div></details> <p>保存退出，重启tomcat，查看效果。<br>
+在页面中显示最大线程数为-1，这个是正常的，仅仅是显示的问题，实际使用的指定的值。
+<img src="https://hg-tian-guangzhou.oss-cn-shenzhen.aliyuncs.com/docblog/%E5%B7%A5%E4%BD%9C%E4%BD%BF%E6%88%91%E5%BF%AB%E4%B9%90/tomcatYH/1598426430%281%29.jpg" alt="qidong"><br> <a>https://blog.csdn.net/weixin_38278878/article/details/80144397</a></p> <h4 id="_3-3-运行模式"><a href="#_3-3-运行模式" class="header-anchor">#</a> 3-3 运行模式</h4> <p>tomcat的运行模式有3种：</p> <p>bio<br>
+默认的模式,性能非常低下,没有经过任何优化处理和支持.<br>
+nio<br>
+nio(new I/O)，是Java SE 1.4及后续版本提供的一种新的I/O操作方式(即java.nio包及其子包)。<br>
+Java nio是一个基于缓冲区、并能提供非阻塞I/O操作的Java API，因此nio也被看成是non-blocking I/O的缩写。它拥有比传统I/O操作(bio)更好的并发运行性能。<br>
+apr<br>
+安装起来最困难,但是从操作系统级别来解决异步的IO问题,大幅度的提高性能.</p> <p>推荐使用nio，不过，在tomcat8中有最新的nio2，速度更快，建议使用nio2.</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;!--在Connector中设置executor属性指向上面的执行器--&gt;
+    &lt;Connector executor=&quot;tomcatThreadPool&quot; port=&quot;8080&quot; protocol=&quot;org.apache.coyote.http11.Http11Nio2Protocol&quot;
+               connectionTimeout=&quot;20000&quot;
+               redirectPort=&quot;8443&quot; /&gt;
+
+</code></pre></div><p>对于优化后的tomcat性能，可以使用 apache Jmeter 进行压力测试。Jemeter的使用下篇文章再说<br>
+目前很多项目都是使用springboot框架，springboot内置tomcat ，对于优化springboot内置tomcat以后再说<br></p><p align="right">发表日期：2020/8/26 15:38</p><p></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/工作使我快乐/springboot项目瘦身开始.html" class="prev">
+        springboot项目瘦身开始
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.fa91de30.js" defer></script><script src="/assets/js/2.0d0d65b4.js" defer></script><script src="/assets/js/18.8eaee8b6.js" defer></script>
+  </body>
+</html>

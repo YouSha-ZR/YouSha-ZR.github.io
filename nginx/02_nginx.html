@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>02_nginx | 忆江南</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="https://dss1.bdstatic.com/6OF1bjeh1BF3odCf/it/u=210770744,2328723573&amp;fm=85&amp;app=79&amp;f=JPEG?w=121&amp;h=75&amp;s=95F35F36EC73B6014C2583EF03007027">
+    <meta name="description" content="">
+    <link rel="preload" href="/assets/css/0.styles.34d67128.css" as="style"><link rel="preload" href="/assets/js/app.fa91de30.js" as="script"><link rel="preload" href="/assets/js/2.0d0d65b4.js" as="script"><link rel="preload" href="/assets/js/12.43e73420.js" as="script"><link rel="prefetch" href="/assets/js/10.fdada502.js"><link rel="prefetch" href="/assets/js/11.7446c5d9.js"><link rel="prefetch" href="/assets/js/13.0bd00f52.js"><link rel="prefetch" href="/assets/js/14.8cd3817e.js"><link rel="prefetch" href="/assets/js/15.ce210d71.js"><link rel="prefetch" href="/assets/js/16.ae0272e0.js"><link rel="prefetch" href="/assets/js/17.9f321981.js"><link rel="prefetch" href="/assets/js/18.8eaee8b6.js"><link rel="prefetch" href="/assets/js/19.a1d3ae1d.js"><link rel="prefetch" href="/assets/js/20.310d84f6.js"><link rel="prefetch" href="/assets/js/21.251e31ae.js"><link rel="prefetch" href="/assets/js/3.e0637fce.js"><link rel="prefetch" href="/assets/js/4.7d5f245c.js"><link rel="prefetch" href="/assets/js/5.f8be39f3.js"><link rel="prefetch" href="/assets/js/6.9beb8a1d.js"><link rel="prefetch" href="/assets/js/7.04560a71.js"><link rel="prefetch" href="/assets/js/8.498d5952.js"><link rel="prefetch" href="/assets/js/9.48a50568.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.34d67128.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://dss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2628267071,65708773&amp;fm=26&amp;gp=0.jpg" alt="忆江南" class="logo"> <span class="site-name can-hide">忆江南</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国际站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国内站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国际站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国内站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国际站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国内站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国际站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://www.baidu.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  国内站
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/java/" class="sidebar-heading clickable"><span>Java</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/java/权限修饰符.html" class="sidebar-link">权限修饰符</a></li><li><a href="/java/springBoot整合Swagger2.html" class="sidebar-link">springBoot整合Swagger2</a></li><li><a href="/java/linux命令集.html" class="sidebar-link">linux命令集</a></li><li><a href="/java/项目部署.html" class="sidebar-link">项目部署</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/vue/" class="sidebar-heading clickable"><span>Vue</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue/vue-1.html" class="sidebar-link">Vue01</a></li><li><a href="/vue/vue-2.html" class="sidebar-link">Vue01</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/数据库/" class="sidebar-heading clickable"><span>数据库</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/数据库/记录第一次sql优化经历.html" class="sidebar-link">记录第一次sql优化经历</a></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/nginx/" class="sidebar-heading clickable router-link-active open"><span>nginx</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/nginx/01_nginx.html" class="sidebar-link">01_nginx</a></li><li><a href="/nginx/02_nginx.html" aria-current="page" class="active sidebar-link">02_nginx</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/nginx/02_nginx.html#_02-nginx" class="sidebar-link">02_nginx</a></li></ul></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/工作使我快乐/" class="sidebar-heading clickable"><span>工作使我快乐</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/工作使我快乐/关于解决绿盟科技安全评估报告中的web漏洞.html" class="sidebar-link">关于解决绿盟科技安全评估报告中的web漏洞</a></li><li><a href="/工作使我快乐/springboot项目瘦身开始.html" class="sidebar-link">springboot项目瘦身开始</a></li><li><a href="/工作使我快乐/tomcat优化.html" class="sidebar-link">tomcat优化</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="_02-nginx"><a href="#_02-nginx" class="header-anchor">#</a> 02_nginx</h2> <div class="language-xml extra-class"><pre class="language-xml"><code>#启动Nginx工作进程的用户和组，比如&quot;user nginx nginx&quot;
+#user  nobody;　　　　　　　　　　　　　　　　　　　　　　　　                      
+    
+#启动nginx工作进程的数量,默认是一个，这个参数取决于你服务器CPU的核心数，一般情况下该值要小于等于你服务器的核心数哟。在nginx1.8版本之后咱们可以直接写&quot;auto&quot;,即无需手写几个core数量，而是交给nginx自动取判断服务器拥有的core数量。
+worker_processes  4;　　　
+    
+#将Nginx工作进程绑定到指定的CPU核心，默认Nginx是不进行进程绑定的，绑定并不是意味着当前nginx进程独占以一核心CPU，但是可以保证此进程不会运行在其他核心上，这就极大减少了nginx的工作进程在不同的cpu核心上的来回跳转，减少了CPU对进程的资源分配与回收以及内存管理等，因此可以有效的提升nginx服务器的性能。
+worker_cpu_affinity 00000001 00000010 00000100 00001000; 
+    
+#错误日志记录配置，语法：error_log file [debug | info | notice | warn | error | crit |alert | emerg]
+#error_log  logs/error.log;                                                 
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+     
+#pid文件保存路径 
+#pid        logs/nginx.pid;                         
+                           
+#工作进程优先级，-20~19  
+worker_priority 0;              
+                                              
+#这个数字包括Nginx的所有连接（例如与代理服务器的连接等），而不仅仅是与客户端的连接,另一个考虑因素是实际的并发连接数不能超过系统级别的最大打开文件数的限制.
+worker_rlimit_nofile 65536;                   
+                                 
+#前台运行Nginx服务用于测试、docker等环境。   
+daemon off;                                                           
+        
+#是否开启Nginx的master-woker工作模式。
+master_process off|on;                                                       
+    
+#events设置快，主要影响nginx服务器与用户的网络连接，比如是否允许同时接受多个网络连接，使用哪种事件驱动模型处理请求，每个工作进程可以同时支持的最大连接数，是否开启对多工作进程下的网络连接进行序列化等。
+events {
+
+    #设置单个nginx工作进程可以接受的最大并发，作为web服务器的时候最大并发数为&quot;worker_connections * worker_processes&quot;，作为反向代理的时候为&quot;(worker_connections * worker_processes)/2&quot;(因为反向代理服务器是响应一个客户端请求连接需要消耗两个文件描述符，即接收客户端请求需要消耗一个文件描述符，将请求转发给后端的rip服务器处理又消费了一个文件描述符)
+    worker_connections  100000;                  
+        
+    #使用epoll事件驱动，Nginx支持众多的事件驱动，比如select、poll、epoll，只能设置在events模块中设置。
+    use epoll;                                                               
+        
+    #优化同一时刻只有一个请求而避免多个睡眠进程被唤醒的设置，on为防止被同时唤醒默认为off，全部唤醒的过程也成为&quot;惊群&quot;，因此nginx刚安装完以后要进行适当的优化。
+    accept_mutex on;                                                         
+        
+    #Nginx服务器的每个工作进程可以同时接受多个新的网络连接，但是需要在配置文件中配置，此指令默认为关闭，即默认为一个工作进程只能一次接受一个新的网络连接，打开后几个同时接受多个，配置语法如下：
+    multi_accept on; 
+        
+}
+
+#http块是Nginx服务器配置中的重要部分，缓存、代理和日志格式定义等绝大多数功能和第三方模块都可以在这设置，http块可以包含多个server块，而一个server块中又可以包含多个location块，server块可以配置文件引入、MIME-Type定义、日志自定义、是否启用sendfile、连接超时时间和单个链接的请求上限等。
+http {
+    
+    #导入支持的文件类型，mime.types：支持的mime类型，MIME(Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型，MIME消息能包含文本、图像、音频、视频以及其他应用程序专用的数据，是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，浏览器会自动使用指定应用程序来打开。多用于指定一些客户端自定义的文件名，以及一些媒体文件打开方式。
+    include       mime.types;
+        
+    #设置默认的类型，会提示下载不匹配的类型文件
+    default_type  application/octet-stream;
+        
+    #日志配置部分
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+        
+    
+    #access_log  logs/access.log  main;
+
+    #指定是否使用sendfile系统调用来传输文件,sendfile系统调用在两个文件描述符之间直接传递数据(完全在内核中操作)，从而避免了数据在内核缓冲区和用户缓冲区之间的拷贝，操作效率很高，被称之为零拷贝，硬盘 &gt;&gt; kernel buffer (快速拷贝到kernelsocket buffer) &gt;&gt;协议栈。作为web服务器的时候我推荐大家打开sendfile加快文件传输
+    sendfile        on;
+       
+    #在开启了sendfile的情况下，合并请求后统一发送给客户端。
+    #tcp_nopush     on;
+ 
+    #在开启了keepalived模式下的连接是否启用TCP_NODELAY选项，当为off时，延迟0.2s发送，默认On时，不延迟发送，立即发送用户相应报文。
+    #tcp_nodelay off;
+
+    #长连接超时时间，单位是秒，即设置会话保持时间
+    #keepalive_timeout  0;
+
+    #设置会话保持时间时，我们也可以指定2个参数，第一个参数表示会话的保存时间，第二个参数是nginx通过response报文告诉客户端会话的保持时间，比如咱们配置的了服务端主动告诉客户端设置的连接超时时间是60秒，而实际上是65秒会话才会断开哟~
+    keepalive_timeout  65 60;
+　　
+　　 #通常情况下咱们都会开启压缩功能的哟~
+    #gzip  on;
+
+    #设置一个虚拟机主机，可以包含自己的全局快，同时也可以包含多个locating模块。比如本虚拟机监听的端口、本虚拟机的名称和IP配置，多个server 可以使用一个端口，比如都使用80端口提供web服务、
+    server {
+
+        #配置server监听的端口
+        listen       80;
+
+        #本server的名称，当访问此名称的时候nginx会调用当前serevr内部的配置进程匹配，以空格方式隔开多个FQDN，当然也支持正则表达式的方式匹配主机名。
+        server_name  localhost;
+　　　　
+　 　　  #指定编码格式，推荐修改为UTF-8字符编码
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        #location其实是server的一个指令，为nginx服务器提供比较多而且灵活的指令，都是在location中提现的，主要是基于nginx接受到的请求字符串，对用户请求的UIL进行匹配，并对特定的指令进行处理，包括地址重定向、数据缓存和应答控制等功能都是在这部分实现，另外很多第三方模块的配置也是在location模块中配置。
+        location / {
+
+            #相当于默认页面的目录名称，默认是相对路径（如果是基于yum方式安装则是&quot;/usr/share/nginx/html/&quot;，如果是基于源码方式安装，则在安装目录的下，如&quot;/yinzhengjie/softwares/nginx/html/&quot;),当然咱们也可以使用绝对路径配置。
+            root   html;
+
+            #默认的页面文件名称
+            index  index.html index.htm;
+        }
+
+        #错误页面的文件名称
+        #error_page  404              /404.html;
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+
+        #location处理对应的不同错误码的页面定义到/50x.html，这个跟对应其server中定义的目录下。
+        location = /50x.html {
+
+            #定义默认页面所在的目录
+            root   html;
+        }
+
+        #以http的方式转发php请求到指定web服务器
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        #以fastcgi的方式转发php请求到php处理
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+             #拒绝web形式访问指定文件，如很多的网站都是通过.htaccess文件来改变自己的重定向等功能。
+        #    deny  all;
+        #}
+    }
+
+    #自定义虚拟server
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+
+    #    location / {
+    #        root   html;
+             #指定默认网页文件，此指令由ngx_http_index_module模块提供
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+    #https服务器配置
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+#和邮件相关的配置
+#mail {
+# ...         #mail 协议相关配置段
+# } 
+
+#tcp代理配置，1.9版本以上支持
+#stream {
+# ...         #stream 服务器相关配置段
+# } 
+
+#导入其他路径的配置文件
+#include /yinzhengjie/softwares/nginx/conf.d/*.conf;
+ 
+}
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/nginx/01_nginx.html" class="prev">
+        01_nginx
+      </a></span> <span class="next"><a href="/工作使我快乐/关于解决绿盟科技安全评估报告中的web漏洞.html">
+        关于解决绿盟科技安全评估报告中的web漏洞
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.fa91de30.js" defer></script><script src="/assets/js/2.0d0d65b4.js" defer></script><script src="/assets/js/12.43e73420.js" defer></script>
+  </body>
+</html>
